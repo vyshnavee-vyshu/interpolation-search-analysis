@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolation Search Analysis</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#0f172a,#1e293b);
+            color:white;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .container{
+            width:90%;
+            max-width:900px;
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(15px);
+            border-radius:25px;
+            padding:40px;
+            text-align:center;
+            box-shadow:0 0 30px rgba(0,255,255,0.2);
+        }
+
+        h1{
+            font-size:3rem;
+            margin-bottom:10px;
+            background:linear-gradient(to right,#38bdf8,#22c55e);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        h2{
+            color:#cbd5e1;
+            margin-bottom:25px;
+        }
+
+        p{
+            color:#e2e8f0;
+            line-height:1.8;
+            font-size:1.1rem;
+        }
+
+        .card-container{
+            display:flex;
+            gap:20px;
+            justify-content:center;
+            flex-wrap:wrap;
+            margin-top:30px;
+        }
+
+        .card{
+            width:220px;
+            padding:20px;
+            border-radius:15px;
+            background:rgba(255,255,255,0.1);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 20px rgba(56,189,248,0.4);
+        }
+
+        .card h3{
+            color:#38bdf8;
+            margin-bottom:10px;
+        }
+
+        footer{
+            margin-top:35px;
+            color:#94a3b8;
+        }
+
+        .badge{
+            display:inline-block;
+            margin-top:15px;
+            padding:10px 20px;
+            border-radius:30px;
+            background:#22c55e;
+            color:white;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Interpolation Search Analysis</h1>
+    <h2>Design and Analysis of Algorithms Project</h2>
+
+    <p>
+        This project demonstrates the implementation and performance analysis
+        of the Interpolation Search algorithm and compares it with Binary Search
+        on datasets of varying sizes.
+    </p>
+
+    <div class="badge">
+        Successfully Hosted on Vercel 🚀
+    </div>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Algorithm</h3>
+            <p>Interpolation Search</p>
+        </div>
+
+        <div class="card">
+            <h3>Complexity</h3>
+            <p>O(log log n)</p>
+        </div>
+
+        <div class="card">
+            <h3>Language</h3>
+            <p>Python</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <br>
+        Developed by <b>Vyshnavee R</b><br>
+        Chennai Institute of Technology
+    </footer>
+
+</div>
+
+</body>
+</html>
