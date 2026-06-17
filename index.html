@@ -1,144 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interpolation Search Analysis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interpolation Search Visualizer</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Segoe UI',sans-serif;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
 
-        body{
-            background:linear-gradient(135deg,#0f172a,#1e293b);
-            color:white;
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:20px;
-        }
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
 
-        .container{
-            width:90%;
-            max-width:900px;
-            background:rgba(255,255,255,0.08);
-            backdrop-filter:blur(15px);
-            border-radius:25px;
-            padding:40px;
-            text-align:center;
-            box-shadow:0 0 30px rgba(0,255,255,0.2);
-        }
+.container{
+width:90%;
+max-width:900px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+padding:40px;
+box-shadow:0 0 30px rgba(0,255,255,0.2);
+}
 
-        h1{
-            font-size:3rem;
-            margin-bottom:10px;
-            background:linear-gradient(to right,#38bdf8,#22c55e);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-        }
+h1{
+text-align:center;
+margin-bottom:10px;
+font-size:2.8rem;
+background:linear-gradient(to right,#38bdf8,#22c55e);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-        h2{
-            color:#cbd5e1;
-            margin-bottom:25px;
-        }
+.subtitle{
+text-align:center;
+margin-bottom:30px;
+color:#cbd5e1;
+}
 
-        p{
-            color:#e2e8f0;
-            line-height:1.8;
-            font-size:1.1rem;
-        }
+label{
+display:block;
+margin-top:20px;
+margin-bottom:8px;
+font-weight:bold;
+}
 
-        .card-container{
-            display:flex;
-            gap:20px;
-            justify-content:center;
-            flex-wrap:wrap;
-            margin-top:30px;
-        }
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
 
-        .card{
-            width:220px;
-            padding:20px;
-            border-radius:15px;
-            background:rgba(255,255,255,0.1);
-            transition:0.3s;
-        }
+button{
+margin-top:25px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#22c55e;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
 
-        .card:hover{
-            transform:translateY(-10px);
-            box-shadow:0 0 20px rgba(56,189,248,0.4);
-        }
+button:hover{
+transform:translateY(-2px);
+}
 
-        .card h3{
-            color:#38bdf8;
-            margin-bottom:10px;
-        }
+.result{
+margin-top:30px;
+padding:20px;
+background:rgba(255,255,255,0.08);
+border-radius:15px;
+display:none;
+}
 
-        footer{
-            margin-top:35px;
-            color:#94a3b8;
-        }
+.result h2{
+margin-bottom:15px;
+color:#38bdf8;
+}
 
-        .badge{
-            display:inline-block;
-            margin-top:15px;
-            padding:10px 20px;
-            border-radius:30px;
-            background:#22c55e;
-            color:white;
-            font-weight:bold;
-        }
-    </style>
+.result p{
+margin:8px 0;
+font-size:18px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Interpolation Search Analysis</h1>
-    <h2>Design and Analysis of Algorithms Project</h2>
+<h1>Interpolation Search Analysis</h1>
 
-    <p>
-        This project demonstrates the implementation and performance analysis
-        of the Interpolation Search algorithm and compares it with Binary Search
-        on datasets of varying sizes.
-    </p>
+<p class="subtitle">
+Design and Analysis of Algorithms Project
+</p>
 
-    <div class="badge">
-        Successfully Hosted on Vercel 🚀
-    </div>
+<label>Enter Sorted Array (comma separated)</label>
+<input id="arrayInput"
+placeholder="2,5,10,15,23,35,48,60,75,90">
 
-    <div class="card-container">
+<label>Enter Target Value</label>
+<input id="targetInput"
+placeholder="35">
 
-        <div class="card">
-            <h3>Algorithm</h3>
-            <p>Interpolation Search</p>
-        </div>
+<button onclick="runSearch()">
+Run Interpolation Search
+</button>
 
-        <div class="card">
-            <h3>Complexity</h3>
-            <p>O(log log n)</p>
-        </div>
+<div class="result" id="resultBox">
+<h2>Search Result</h2>
 
-        <div class="card">
-            <h3>Language</h3>
-            <p>Python</p>
-        </div>
-
-    </div>
-
-    <footer>
-        <br>
-        Developed by <b>Vyshnavee R</b><br>
-        Chennai Institute of Technology
-    </footer>
+<p id="indexResult"></p>
+<p id="comparisonResult"></p>
+<p>Average Complexity: O(log log n)</p>
+<p>Worst Case: O(n)</p>
 
 </div>
+
+</div>
+
+<script>
+
+function interpolationSearch(arr,target){
+
+let low=0;
+let high=arr.length-1;
+let comparisons=0;
+
+while(
+low<=high &&
+target>=arr[low] &&
+target<=arr[high]
+){
+
+comparisons++;
+
+if(low===high){
+
+if(arr[low]===target)
+return {index:low,comparisons};
+
+return {index:-1,comparisons};
+}
+
+let pos=
+low+
+Math.floor(
+((target-arr[low])*(high-low))
+/
+(arr[high]-arr[low])
+);
+
+if(arr[pos]===target){
+return {index:pos,comparisons};
+}
+
+if(arr[pos]<target){
+low=pos+1;
+}
+else{
+high=pos-1;
+}
+}
+
+return {index:-1,comparisons};
+}
+
+function runSearch(){
+
+let arr=document
+.getElementById("arrayInput")
+.value
+.split(",")
+.map(Number);
+
+let target=parseInt(
+document.getElementById("targetInput").value
+);
+
+let result=
+interpolationSearch(arr,target);
+
+document.getElementById("resultBox").style.display="block";
+
+if(result.index!==-1){
+document.getElementById("indexResult").innerHTML=
+"✅ Found at Index: <b>"+result.index+"</b>";
+}
+else{
+document.getElementById("indexResult").innerHTML=
+"❌ Element Not Found";
+}
+
+document.getElementById("comparisonResult").innerHTML=
+"Comparisons: <b>"+result.comparisons+"</b>";
+
+}
+
+</script>
 
 </body>
 </html>
